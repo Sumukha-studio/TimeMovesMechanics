@@ -9,16 +9,11 @@ Unity mechanics exploration project where time moves when you move (inspired by 
 ## Getting Started
 
 ### Prerequisites
-- **Git** with **Git LFS** installed:
-  ```bash
-  git lfs install
-  ```
+- **Git**
 - **Unity Hub** and **Unity 6 (6000.3.24f1)**
 
 ### Cloning the Repository
-When cloning this repository, make sure Git LFS is installed so that binary assets (textures, audio, 3D models) download properly:
 ```bash
 git clone <repository-url>
 cd TimeMovesMechanics
-git lfs pull
 ```
