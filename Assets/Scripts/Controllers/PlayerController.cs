@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _playerSpeed = 5f;
+    [SerializeField] private float _rotationSpeed = 10f;
     [SerializeField] private float _gravity = -9.81f;
 
     private CharacterController _characterController;
@@ -27,17 +28,20 @@ public class PlayerController : MonoBehaviour
             _velocity.y = -2f;
         }
 
-        Vector2 input = Vector2.zero;
+        float forwardInput = 0f;
+        float turnInput = 0f;
+
         if (Keyboard.current != null)
         {
-            if (Keyboard.current.wKey.isPressed) input.y += 1f;
-            if (Keyboard.current.sKey.isPressed) input.y -= 1f;
-            if (Keyboard.current.aKey.isPressed) input.x -= 1f;
-            if (Keyboard.current.dKey.isPressed) input.x += 1f;
+            if (Keyboard.current.wKey.isPressed) forwardInput += 1f;
+            if (Keyboard.current.sKey.isPressed) forwardInput -= 1f;
+            if (Keyboard.current.aKey.isPressed) turnInput -= 1f;
+            if (Keyboard.current.dKey.isPressed) turnInput += 1f;
         }
-        input = input.normalized;
 
-        Vector3 move = transform.right * input.x + transform.forward * input.y;
+        transform.Rotate(0f, turnInput * _rotationSpeed * Time.deltaTime, 0f);
+
+        Vector3 move = transform.forward * forwardInput;
         _velocity.y += _gravity * Time.deltaTime;
 
         Vector3 totalMovement = (move * _playerSpeed + _velocity) * Time.deltaTime;
