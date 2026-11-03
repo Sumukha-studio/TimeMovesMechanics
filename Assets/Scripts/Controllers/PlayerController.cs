@@ -9,12 +9,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _rotationSpeed = 10f;
     [SerializeField] private float _gravity = -9.81f;
     [SerializeField] private float _timeTransitionSpeed = 1.0f;
+    [SerializeField] private float _fireRate = 5.0f;
 
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private Transform _projectileSpawnPoint;
 
     private CharacterController _characterController;
     private Vector3 _velocity;
+    private float _nextFireTime = 0f;
 
     private void Awake()
     {
@@ -58,9 +60,10 @@ public class PlayerController : MonoBehaviour
 
     private void HandleShooting()
     {
-        if (Keyboard.current.spaceKey.isPressed)
+        if (Keyboard.current.spaceKey.isPressed && Time.time >= _nextFireTime)
         {
             Debug.Log("Space Key has been pressed");
+            _nextFireTime = Time.time + (1f / _fireRate);
             Shoot();
         }
     }
@@ -81,9 +84,9 @@ public class PlayerController : MonoBehaviour
         {
 
             _isMoving = Keyboard.current.wKey.isPressed ||
-                        Keyboard.current.sKey.isPressed ||
-                        Keyboard.current.aKey.isPressed ||
-                       Keyboard.current.dKey.isPressed;
+                        Keyboard.current.sKey.isPressed;
+            //     Keyboard.current.aKey.isPressed ||
+            //    Keyboard.current.dKey.isPressed;
 
         }
 

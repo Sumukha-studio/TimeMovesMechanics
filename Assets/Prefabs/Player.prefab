@@ -240,7 +240,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 73f0359a89730e048ac39f7a4d5474a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -303,6 +303,7 @@ MonoBehaviour:
   _rotationSpeed: 90
   _gravity: -9.81
   _timeTransitionSpeed: 1.2
+  _fireRate: 2
   _projectilePrefab: {fileID: 4226567663538363996, guid: 16a5d6286024d75478b97763c986c466, type: 3}
   _projectileSpawnPoint: {fileID: 9180298217586095309}
 --- !u!143 &887832988015773459

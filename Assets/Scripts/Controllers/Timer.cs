@@ -11,10 +11,11 @@ public class Timer : MonoBehaviour
     {
         _elapsedTime += Time.deltaTime;
 
+        int minutes = Mathf.FloorToInt(_elapsedTime / 60f);
         int seconds = Mathf.FloorToInt(_elapsedTime % 60f);
         int milliseconds = Mathf.FloorToInt((_elapsedTime * 100f) % 100f);
 
-        _timeText.text = $"{seconds:00}.{milliseconds:00}";
+        _timeText.text = $"{minutes:00}.{seconds:00}.{milliseconds:00}";
     }
 
 }

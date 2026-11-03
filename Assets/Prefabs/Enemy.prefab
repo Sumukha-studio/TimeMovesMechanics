@@ -187,4 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fac5266448762b42a04d0912ad187fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
-  _speed: 3
+  _speed: 6
+  _projectilePrefab: {fileID: 7629305200690219626, guid: 6ba0029294baad14f93f08570087b3ec, type: 3}
+  _projectileSpawnPoint: {fileID: 1429938998063648191}
+  _fireRate: 2
