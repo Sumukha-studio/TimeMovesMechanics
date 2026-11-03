@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _playerSpeed = 5f;
     [SerializeField] private float _rotationSpeed = 10f;
     [SerializeField] private float _gravity = -9.81f;
+    [SerializeField] private float _timeTransitionSpeed = 1.0f;
 
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private Transform _projectileSpawnPoint;
@@ -56,9 +58,9 @@ public class PlayerController : MonoBehaviour
 
     private void HandleShooting()
     {
-        if (Keyboard.current.xKey.isPressed)
+        if (Keyboard.current.spaceKey.isPressed)
         {
-            Debug.Log("x Key has been pressed");
+            Debug.Log("Space Key has been pressed");
             Shoot();
         }
     }
@@ -73,19 +75,27 @@ public class PlayerController : MonoBehaviour
 
     private void HandleTimeScale()
     {
-        bool isMoving = false;
+        bool _isMoving = false;
 
         if (Keyboard.current != null)
         {
 
-            isMoving = Keyboard.current.wKey.isPressed ||
+            _isMoving = Keyboard.current.wKey.isPressed ||
                         Keyboard.current.sKey.isPressed ||
                         Keyboard.current.aKey.isPressed ||
                        Keyboard.current.dKey.isPressed;
 
         }
 
-        Time.timeScale = isMoving ? 1.0f : 0.1f;
+        if (_isMoving)
+        {
+            Time.timeScale = 1.0f;
+        }
+        else
+        {
+            Time.timeScale = Mathf.Lerp(Time.timeScale, 0.1f, _timeTransitionSpeed * Time.unscaledDeltaTime);
+
+        }
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
 }

@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 2335989715092210817}
   - component: {fileID: 1113536276692431614}
   - component: {fileID: 887832988015773459}
+  - component: {fileID: 6318836836408766156}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -298,9 +299,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2daaf9572b2fa443aa3010957bef9a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  _playerSpeed: 5
+  _playerSpeed: 5.75
   _rotationSpeed: 90
   _gravity: -9.81
+  _timeTransitionSpeed: 1.2
   _projectilePrefab: {fileID: 4226567663538363996, guid: 16a5d6286024d75478b97763c986c466, type: 3}
   _projectileSpawnPoint: {fileID: 9180298217586095309}
 --- !u!143 &887832988015773459
@@ -328,3 +330,18 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6318836836408766156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7913690039342145193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31dc8aaf41e9a884e948c6533caa0918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
+  _enemyPrefab: {fileID: 2041486381424544969, guid: 2efa9db37ffda1a4f8f1ae0ae60f2d79, type: 3}
+  _spawnInterval: 3
+  _spawnDistance: 45

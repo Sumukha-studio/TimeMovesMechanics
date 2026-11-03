@@ -19,6 +19,11 @@ public class ProjectileController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Destroy(gameObject);
+
+        if (collision.gameObject.TryGetComponent<EnemyController>(out EnemyController enemy))
+        {
+            enemy.Die();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
